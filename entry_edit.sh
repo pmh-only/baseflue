@@ -16,4 +16,7 @@ echo "-- [Load FAGATE METADATA] --"
 export TASK_ARN=$(curl "$ECS_CONTAINER_METADATA_URI_V4/task" | jq -r "TaskARN")
 export TASK_ID=$(echo "$TASK_ARN" | awk -F/ '{ print $NF }')
 
+echo "TASK_ARN=$TASK_ARN"
+echo "TASK_ID=$TASK_ID"
+
 echo "-- [start original entrypoint.sh] ---"
