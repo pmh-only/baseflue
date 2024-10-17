@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          docker pull amazon/aws-for-fluent-bit:latest
-          docker images amazon/aws-for-fluent-bit:latest --format "{{.ID}}" > latest_image_id
+          docker pull public.ecr.aws/aws-observability/aws-for-fluent-bit:latest
+          docker images public.ecr.aws/aws-observability/aws-for-fluent-bit:latest --format "{{.ID}}" > latest_image_id
       - uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
