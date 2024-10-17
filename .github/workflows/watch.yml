@@ -1,0 +1,22 @@
+name: 'Watch original base image update'
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    name: Check update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          docker pull docker.io/amazon/aws-for-fluent-bit:latest
+          docker images docker.io/amazon/aws-for-fluent-bit:latest --format "{{.ID}}" > latest_image_id
+      - uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "ci: update latest_image_id"
