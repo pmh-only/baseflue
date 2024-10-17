@@ -3,13 +3,16 @@ echo "== [BASEFLUE made by Minhyeok Park] =="
 set -o pipefail
 set -e
 
-base64 -d <<< $CONFIG > /config.conf
-base64 -d <<< $PARSERS > /parsers.conf
+echo "-- [Super dir] --"
+chmod a+rwx $SUPER_DIR
+echo $SUPER_DIR
 
 echo "-- [config.conf] --"
+base64 -d <<< $CONFIG > /config.conf
 cat /config.conf
 
 echo "\n-- [parsers.conf] --"
+base64 -d <<< $PARSERS > /parsers.conf
 cat /parsers.conf
 
 echo "\n-- [Load FAGATE METADATA] --"
