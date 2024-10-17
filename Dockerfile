@@ -1,5 +1,6 @@
 FROM public.ecr.aws/aws-observability/aws-for-fluent-bit:latest
 
-RUN sed -i '1s;^;cat /fluent-bit/etc/fluent-bit.conf\n;' /entrypoint.sh
-RUN sed -i '1s;^;base64 -d <<< $PARSERS > /parsers.conf\n;' /entrypoint.sh
-RUN sed -i '1s;^;base64 -d <<< $CONFIG > /config.conf\n;' /entrypoint.sh
+ADD entry_edit.sh /entry_edit.sh
+
+RUN yum install -y jq
+RUN sed -i '1s;^;source /entry_edit.sh\n;' /entrypoint.sh
