@@ -9,10 +9,10 @@ base64 -d <<< $PARSERS > /parsers.conf
 echo "-- [config.conf] --"
 cat /config.conf
 
-echo "-- [parsers.conf] --"
+echo "\n-- [parsers.conf] --"
 cat /parsers.conf
 
-echo "-- [Load FAGATE METADATA] --"
+echo "\n-- [Load FAGATE METADATA] --"
 export TASK_ARN=$(curl "$ECS_CONTAINER_METADATA_URI_V4/task" | jq -r ".TaskARN")
 export TASK_ID=$(echo "$TASK_ARN" | awk -F/ '{ print $NF }')
 
