@@ -3,9 +3,9 @@ echo "== [BASEFLUE made by Minhyeok Park] =="
 set -o pipefail
 set -e
 
-echo "-- [Super dir] --"
-chmod a+rwx $SUPER_DIR
-echo $SUPER_DIR
+echo "-- [pre_exec] --"
+base64 -d <<< $PRE_EXEC > /pre_exec.sh
+source /pre_exec.sh
 
 echo "-- [config.conf] --"
 base64 -d <<< $CONFIG > /config.conf
