@@ -8,7 +8,7 @@ This image has been uploaded to ECR Private Registry with public access policy.
 
 so yeah. You can use this via ECR VPC Endpoints!
 ```
-009160052643.dkr.ecr.ap-northeast-2.amazonaws.com/baseflue:latest
+009160052643.dkr.ecr.<region>.amazonaws.com/baseflue:latest
 ```
 
 ## Main Features
